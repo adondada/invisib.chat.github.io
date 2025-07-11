@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>invisib.chat — Ultra Secure Messenger</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  body {
+    margin: 0; padding: 0;
+    background: #121212;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #81d8f7;
+  }
+  p.description {
+    max-width: 600px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: #bbb;
+  }
+  .button-copy {
+    background: #00bcd4;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #121212;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .button-copy:hover {
+    background: #0097a7;
+  }
+  .onion-link {
+    margin-top: 2rem;
+    font-family: monospace;
+    font-size: 1.25rem;
+    word-break: break-all;
+    user-select: all;
+    color: #80cbc4;
+  }
+  .instructions {
+    margin-top: 3rem;
+    max-width: 600px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #888;
+  }
+  footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+    color: #444;
+  }
+</style>
+</head>
+<body>
+  <h1>invisib.chat</h1>
+  <p class="description">
+    Invisib.chat is an ultra-secure, subscription-based messenger built on Tor for ultimate privacy.  
+    No phone numbers, no passwords — just encrypted messaging through the Tor network.
+  </p>
+  <button class="button-copy" id="copyBtn" title="Copy Onion Link">
+    Copy .onion Address
+  </button>
+  <div class="onion-link" id="onionLink" tabindex="0" aria-label="Tor onion address">
+    xuqnavfsel6jjv36rpioueumzpt5ee36lpmpc3ym6h3zaeupnddukzad.onion
+  </div>
+  <div class="instructions">
+    <p><strong>How to access:</strong></p>
+    <p>
+      To visit the full invisib.chat site, you need to use the Tor Browser.  
+      Open the Tor Browser and enter the .onion address above into the URL bar.  
+      This connects you anonymously and securely to our hidden service.
+    </p>
+    <p>
+      Make sure you have the latest Tor Browser installed from <a href="https://www.torproject.org" target="_blank" rel="noopener noreferrer" style="color:#00bcd4;">torproject.org</a>.
+    </p>
+  </div>
+  <footer>
+    &copy; 2025 invisib.chat — Privacy First
+  </footer>
+
+  <script>
+    const copyBtn = document.getElementById('copyBtn');
+    const onionLink = document.getElementById('onionLink');
+
+    copyBtn.addEventListener('click', () => {
+      const text = onionLink.textContent.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy .onion Address';
+        }, 2000);
+      }).catch(() => {
+        alert('Failed to copy. Please copy manually.');
+      });
+    });
+  </script>
+</body>
+</html>
